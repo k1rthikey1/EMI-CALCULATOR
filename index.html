@@ -1,0 +1,92 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EMI Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="page-header">
+    <div class="logo-circle">₹</div>
+    <h1>EMI Calculator</h1>
+    <p class="subtitle">Calculate your Equated Monthly Installments instantly</p>
+  </header>
+
+  <main class="container">
+    <section class="card two-col">
+      <!-- Left: Loan Details -->
+      <div class="panel left">
+        <h2 class="panel-title">Loan Details</h2>
+
+        <div class="form-group">
+          <label for="loanAmount">Loan Amount (₹)</label>
+          <input id="loanAmount" type="number" min="0" step="100" placeholder="e.g., 15000" value="15000" />
+          <small class="hint">Maximum limit: ₹100000000</small>
+        </div>
+
+        <div class="form-group">
+          <label for="loanTenure">Loan Tenure</label>
+          <select id="loanTenure" aria-label="Loan Tenure">
+            <!-- Options will be injected by JS (every 3 months) -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="interestRate">Interest Rate (%)</label>
+          <div class="slider-wrap">
+            <input id="interestRate" type="range" min="1" max="30" step="0.1" value="5.6" />
+            <div class="rate-value"><span id="rateText">5.6</span>%</div>
+          </div>
+          <div class="range-ends">
+            <span>1%</span>
+            <span>30%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: EMI Breakdown -->
+      <div class="panel right">
+        <h2 class="panel-title accent">EMI Breakdown</h2>
+
+        <div class="emi-box">
+          <div class="emi-label">Monthly EMI</div>
+          <div class="emi-value" id="monthlyEmi">₹0</div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Amount</div>
+            <div class="stat-value" id="totalAmount">₹0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Interest</div>
+            <div class="stat-value" id="totalInterest">₹0</div>
+          </div>
+        </div>
+
+        <div class="details">
+          <div class="detail-row">
+            <span>Principal Amount</span>
+            <strong id="principalOut">₹0</strong>
+          </div>
+          <div class="detail-row">
+            <span>Interest Rate</span>
+            <strong id="rateOut">0% per annum</strong>
+          </div>
+          <div class="detail-row">
+            <span>Tenure</span>
+            <strong id="tenureOut">0 months</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="static/script.js"></script>
+</body>
+</html>
